@@ -223,3 +223,113 @@ footer {
     align-items: center;
   }
 }
+
+/* =========================================
+   ✅ RESPONSIVE DESIGN (PHONES & TABLETS)
+========================================= */
+
+/* ----- For Tablets (max-width: 1024px) ----- */
+@media (max-width: 1024px) {
+
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.3rem;
+  }
+
+  .dest-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ----- For Mobile Phones (max-width: 768px) ----- */
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .hero {
+    height: 70vh;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .about {
+    padding: 3rem 1.5rem;
+  }
+
+  .dest-grid {
+    grid-template-columns: 1fr; /* 1 card per row */
+  }
+
+  .card img {
+    height: 250px;
+  }
+
+  .testimonial-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-card {
+    width: 90%;
+  }
+
+  .contact-section {
+    padding: 3rem 1rem;
+  }
+
+  .contact-form, .contact-info {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* ----- For Very Small Phones (max-width: 480px) ----- */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-hero-content p {
+    font-size: 1rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+  }
+}
