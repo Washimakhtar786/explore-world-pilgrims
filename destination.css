@@ -1,110 +1,262 @@
-/* ===== DESTINATIONS PAGE STYLING ===== */
-
-body {
-  background-color: #f9fafb;
-  font-family: 'Poppins', sans-serif;
-  color: #222;
+/* ======= RESET & BASE ======= */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-/* ===== HEADER / TITLE ===== */
-.destinations {
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  overflow-x: hidden; /* Prevents sideways scroll */
+}
+
+/* ======= HEADER ======= */
+header {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
   text-align: center;
-  padding: 5rem 2rem;
-  background: #f9fafb;
+  padding-bottom: 4rem;
 }
 
-.destinations h1 {
-  color: #0a3d62;
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.destinations p {
-  color: #555;
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
-}
-
-/* ===== GRID LAYOUT ===== */
-.dest-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ✅ auto responsive */
-  gap: 2rem;
-  justify-items: center;
-  align-items: stretch;
-  padding: 0 2rem;
-}
-
-/* ===== DESTINATION CARD ===== */
-.card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: all 0.3s ease;
-  max-width: 350px;
-  display: flex;
-  flex-direction: column;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* ===== IMAGE ===== */
-.card img {
-  width: 100%;
-  height: 260px; /* ✅ all images same height */
-  object-fit: cover;
-}
-
-/* ===== CARD CONTENT ===== */
-.card-content {
-  padding: 1.2rem;
-  text-align: left;
-  flex-grow: 1;
-}
-
-.card-content h3 {
-  color: #0a3d62;
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
-}
-
-.card-content p {
-  color: #555;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-/* ===== DETAILS / PRICE / DURATION ===== */
-.card .details {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1rem;
-  background: #f4f8fb;
-  border-top: 1px solid #eee;
-  color: #0a3d62;
+  padding: 1.3rem 4rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  flex-wrap: wrap; /* responsive for smaller screens */
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #f5d76e;
+  text-shadow: 0 0 10px rgba(245, 215, 110, 0.5);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
   font-weight: 500;
+  transition: 0.3s;
 }
 
-/* ===== RESPONSIVE ===== */
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #f5d76e;
+  border-bottom: 2px solid #f5d76e;
+}
+
+/* ======= HEADER TEXT ======= */
+.header-content {
+  margin-top: 3rem;
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  color: #f5d76e;
+}
+
+.header-content p {
+  color: #eaeaea;
+  margin-top: 0.5rem;
+}
+
+/* ======= SEARCH BAR ======= */
+.search-section {
+  text-align: center;
+  margin: 2.5rem 0 1rem;
+}
+
+#searchInput {
+  padding: 0.8rem 1rem;
+  width: 60%;
+  max-width: 450px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#searchInput:focus {
+  border-color: #2c5364;
+  box-shadow: 0 0 10px rgba(44, 83, 100, 0.3);
+}
+
+/* ======= PLACES GRID ======= */
+.places-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 4rem;
+  justify-items: center;
+}
+
+/* ======= PLACE CARD ======= */
+.place-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+}
+
+.place-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.place-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  transition: transform 0.3s ease;
+}
+
+.place-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ======= INFO SECTION ======= */
+.place-info {
+  padding: 1rem 1.2rem;
+  text-align: center;
+}
+
+.place-info h2 {
+  color: #2c5364;
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.place-info p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* ======= PACKAGE DETAILS ======= */
+.package-details {
+  background: #f9fafb;
+  border-top: 1px solid #eee;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.package-details span {
+  display: block;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.price {
+  font-weight: bold;
+  color: #0f2027;
+  font-size: 1.1rem;
+}
+
+.days {
+  color: #2c5364;
+}
+
+.hotel,
+.transport,
+.meals {
+  color: #444;
+}
+
+/* ======= BUTTON ======= */
+.btn-book {
+  background: linear-gradient(to right, #203a43, #2c5364);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  align-self: center;
+  margin-top: 0.6rem;
+}
+
+.btn-book:hover {
+  background: linear-gradient(to right, #2c5364, #203a43);
+  transform: scale(1.05);
+}
+
+/* ======= FOOTER ======= */
+footer {
+  background: #0f2027;
+  color: #f5d76e;
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* ======= RESPONSIVE FIXES ======= */
+
+/* Large tablets and laptops */
+@media (max-width: 1024px) {
+  .places-container {
+    padding: 2rem;
+  }
+  .place-card img {
+    height: 300px;
+  }
+}
+
+/* Tablets */
 @media (max-width: 900px) {
-  .dest-grid {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+  .places-container {
     grid-template-columns: repeat(2, 1fr);
+    padding: 2rem;
   }
 }
 
+/* Mobile phones */
 @media (max-width: 600px) {
-  .dest-grid {
-    grid-template-columns: 1fr;
+  .navbar {
+    padding: 1rem 2rem;
   }
 
-  .card img {
-    height: 220px;
+  .places-container {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .place-card img {
+    height: 280px;
+  }
+
+  #searchInput {
+    width: 85%;
+  }
+
+  .header-content h1 {
+    font-size: 1.8rem;
   }
 }
