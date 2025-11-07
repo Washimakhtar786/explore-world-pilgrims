@@ -1,4 +1,6 @@
-/* ===== RESET & BASE ===== */
+/* ===== DESTINATIONS - FULL RESPONSIVE STYLES ===== */
+
+/* Reset / base */
 * {
   margin: 0;
   padding: 0;
@@ -6,194 +8,169 @@
   font-family: 'Poppins', sans-serif;
 }
 
+:root{
+  --primary:#0a3d62;
+  --accent:#ffd369;
+  --muted:#f4f8fb;
+  --card-max-width:360px;
+}
+
+/* page base */
 body {
-  background-color: #f9fafb;
+  background: var(--muted);
   color: #222;
+  line-height: 1.5;
 }
 
-/* ===== NAVBAR ===== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 3rem;
-  background: #0a3d62;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-}
-
-.logo {
-  color: #fff;
-  font-size: 1.7rem;
-  font-weight: 600;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: #ffd369;
-}
-
-/* ===== HERO SECTION ===== */
+/* hero (optional) */
 .dest-hero {
   background: url('images/destination-hero.jpg') center/cover no-repeat;
-  height: 55vh;
+  height: 50vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   position: relative;
-  margin-top: 70px;
+  margin-top: 70px; /* if you have fixed navbar */
 }
-
-.dest-hero::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+.dest-hero::after{
+  content:"";
+  position:absolute; inset:0; background:rgba(0,0,0,0.45);
 }
+.dest-hero-content{
+  z-index:1; color:#fff; text-align:center; padding:1rem 2rem;
+}
+.dest-hero-content h1{ font-size:2.6rem; margin-bottom:.4rem; }
+.dest-hero-content p{ color:#e6e6e6; font-size:1.05rem; }
 
-.dest-hero-content {
-  color: white;
+/* main section wrapper */
+.dest-section{
+  padding: 4.5rem 1.5rem;
   text-align: center;
-  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.dest-hero-content h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.8rem;
-}
-
-.dest-hero-content p {
-  font-size: 1.2rem;
-  color: #ddd;
-}
-
-/* ===== DESTINATIONS GRID ===== */
-.dest-section {
-  padding: 5rem 3rem;
-  text-align: center;
-  background: #f2f5f8;
-}
-
-.dest-section h2 {
+/* headings */
+.dest-section h2{
+  color: var(--primary);
   font-size: 2rem;
-  color: #0a3d62;
+  margin-bottom: .5rem;
+}
+.dest-section .sub-text{
+  color: #555;
   margin-bottom: 2rem;
+  font-size: 1rem;
 }
 
-.dest-grid {
+/* RESPONSIVE GRID - desktop 3, tablet 2, phone 1 */
+/* Use auto-fit + minmax to be flexible and responsive */
+.dest-grid{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+  align-items: stretch;
   justify-items: center;
+  padding: 0.5rem;
 }
 
-/* ===== DESTINATION CARD ===== */
-.card {
+/* card */
+.card{
   background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: var(--card-max-width);
+  border-radius: 14px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 380px;
+  box-shadow: 0 6px 18px rgba(15, 38, 60, 0.08);
+  transition: transform .28s ease, box-shadow .28s ease;
   display: flex;
   flex-direction: column;
 }
 
-.card:hover {
+/* hover lift */
+.card:hover{
   transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px rgba(15, 38, 60, 0.12);
 }
 
-.card img {
+/* image — equal size for all cards */
+.card img{
+  display: block;
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  height: 260px;          /* choose desired height (260px works well) */
+  object-fit: cover;      /* ensures equal crop without distortion */
+  vertical-align: middle;
 }
 
-.card-content {
-  padding: 1.2rem;
-  text-align: left;
+/* content */
+.card-content{
+  padding: 1rem 1.1rem;
+  flex-grow: 1;           /* make cards equal height even if text differs */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.card-content h3 {
-  color: #0a3d62;
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+.card-content h3{
+  color: var(--primary);
+  font-size: 1.15rem;
+  margin-bottom: .45rem;
 }
 
-.card-content p {
+.card-content p{
   color: #555;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.96rem;
+  margin-bottom: .9rem;
+  line-height: 1.5;
 }
 
-/* ===== BUTTON (OPTIONAL) ===== */
-.btn-explore {
-  display: inline-block;
-  margin-top: 1rem;
-  background: #ffd369;
-  color: #0a3d62;
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
-  text-decoration: none;
+/* details row (price / duration) */
+.card .details{
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: .75rem 1rem;
+  background: #fbfdff;
+  border-top: 1px solid #eee;
   font-weight: 600;
-  transition: 0.3s;
+  color: var(--primary);
+  font-size: 0.95rem;
 }
 
-.btn-explore:hover {
-  background: #ffc107;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  background: #062c49;
-  color: #fff;
+/* optional action button inside card */
+.card .card-action{
+  padding: .9rem 1rem;
   text-align: center;
-  padding: 1.2rem;
-  margin-top: 3rem;
+}
+.card .card-action a{
+  display:inline-block;
+  background:var(--accent);
+  color:var(--primary);
+  padding:.5rem 1rem;
+  border-radius:24px;
+  text-decoration:none;
+  font-weight:700;
+  transition: transform .2s;
+}
+.card .card-action a:hover{ transform: translateY(-3px); }
+
+/* smaller screens tweaks */
+@media (max-width: 992px){
+  .dest-hero{ height:46vh; }
+  .dest-hero-content h1{ font-size:2.2rem; }
+  .card img{ height: 240px; }
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 992px) {
-  .dest-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .dest-hero-content h1 {
-    font-size: 2.2rem;
-  }
+@media (max-width: 768px){
+  .dest-section{ padding: 3rem 1rem; }
+  .card img{ height: 220px; }
+  .dest-hero{ height:42vh; }
+  .dest-hero-content h1{ font-size:1.9rem; }
 }
 
-@media (max-width: 600px) {
-  .dest-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .dest-hero {
-    height: 40vh;
-  }
-
-  .dest-hero-content h1 {
-    font-size: 1.8rem;
-  }
-
-  .dest-section {
-    padding: 3rem 1.5rem;
-  }
+@media (max-width: 480px){
+  .dest-grid{ gap:1rem; }
+  .card img{ height: 180px; } /* keep images smaller on phones */
+  .card{ border-radius:12px; max-width:100%; }
+  .dest-hero{ height:36vh; }
+  .dest-hero-content h1{ font-size:1.6rem; }
 }
