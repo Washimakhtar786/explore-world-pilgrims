@@ -1,4 +1,4 @@
-/* ========== GLOBAL RESET ========== */
+/* ===== GLOBAL ===== */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ========== NAVBAR ========== */
+/* ===== NAVBAR ===== */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -49,163 +49,273 @@ body {
   color: #ffd369;
 }
 
-/* ========== HERO SECTION ========== */
-.dest-hero {
-  background: url('https://images.unsplash.com/photo-1568626727658-997c9b3e24c1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+/* ===== HEADER ===== */
+header {
+  background: url('images/destination.jpg') center/cover no-repeat;
   height: 60vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   position: relative;
   margin-top: 70px;
 }
 
-.dest-hero::after {
+
+
+header::after {
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.5);
 }
 
-.dest-hero-content {
-  color: white;
-  text-align: center;
+.header-content {
   z-index: 1;
+  color: white;
+  max-width: 700px;
+  padding: 1rem;
 }
 
-.dest-hero-content h1 {
+.header-content h1 {
   font-size: 2.8rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
-.dest-hero-content p {
+.header-content p {
   font-size: 1.1rem;
-  color: #ddd;
+  color: #eaeaea;
 }
 
-/* ========== DESTINATION SECTION ========== */
-.dest-section {
-  padding: 5rem 2rem;
-  background: #f2f5f8;
+/* ===== SEARCH SECTION ===== */
+.search-section {
+  margin: 2rem auto;
   text-align: center;
 }
 
-.dest-section h2 {
-  font-size: 2.2rem;
-  color: #0a3d62;
-  margin-bottom: 2.5rem;
-  font-weight: 700;
+.search-section input {
+  width: 80%;
+  max-width: 500px;
+  padding: 0.9rem 1rem;
+  border-radius: 50px; /* gola corners */
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
 }
 
-/* ========== DESTINATION GRID ========== */
-.dest-grid {
+.search-section input:focus {
+  border-color: #0a3d62;
+  box-shadow: 0 0 8px rgba(10, 61, 98, 0.3);
+}
+
+/* ===== PLACES CONTAINER ===== */
+.places-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 🔥 wider cards */
   gap: 2rem;
-  justify-items: center;
-  align-items: stretch;
+  padding: 2rem;
 }
 
-/* ========== CARD STYLE ========== */
-.card {
+
+/* ===== CARD STYLE ===== */
+.place-card {
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px; /* smooth corners */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  max-width: 380px;
-  width: 100%;
+  height: 100%;
 }
 
-.card:hover {
+.place-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.card img {
+.place-card img {
   width: 100%;
-  height: 250px;
+  height: 450px; /* ✅ increased image height */
   object-fit: cover;
-  transition: transform 0.4s ease;
+  border-bottom: 4px solid #ffd369;
 }
 
-.card:hover img {
-  transform: scale(1.05);
+/* ✅ Keep text section structured vertically */
+.place-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
 }
 
-.card-content {
-  padding: 1.5rem;
-  text-align: left;
-}
-
-.card-content h3 {
+/* Title */
+.place-card-content h3 {
+  font-size: 1.3rem;
   color: #0a3d62;
-  font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
-.card-content p {
+/* Description */
+.place-card-content p {
   color: #555;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.5;
+  text-align: justify;
+  margin-bottom: 1rem;
 }
 
-/* ========== FOOTER ========== */
+/* ✅ Price & Duration neatly aligned in column */
+.place-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: #f4f8fb;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-weight: 500;
+  color: #0a3d62;
+  margin-top: auto;
+}
+
+.place-info span {
+  font-size: 0.95rem;
+}
+
+/* ===== PLACE DETAILS IN COLUMN ===== */
+.place-details {
+  display: flex;
+  flex-direction: column; /* makes items go in column */
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0 1rem 1.5rem;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.place-details span {
+  display: block;
+  background: #0a3d62;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  width: 100%; /* full width for each badge */
+  text-align: center;
+}
+
+.place-details span:nth-child(2) {
+  background: #ffd369; /* gold for price */
+  color: #222;
+}
+
+.place-details span:nth-child(3) {
+  background: #1e90ff; /* blue for location */
+  color: #fff;
+}
+
+/* ===== INFO LIST (Price, Duration, Hotel, etc.) ===== */
+.info-list {
+  list-style: none;
+  padding: 1rem 1.2rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.info-list li {
+  font-size: 0.95rem;
+  color: #0a3d62;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.info-list li:hover {
+  transform: translateX(5px);
+  background: #ffd369;
+  color: #222;
+}
+
+.btn-book {
+  margin: 1rem auto;
+  display: block;
+  background: #0a3d62;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-book:hover {
+  background: #ffd369;
+  color: #0a3d62;
+}
+
+
+
+/* ===== FOOTER ===== */
 footer {
   background: #062c49;
   color: #fff;
   text-align: center;
   padding: 1.2rem;
-  margin-top: 3rem;
   font-size: 0.9rem;
 }
 
-/* ========== RESPONSIVE BREAKPOINTS ========== */
+/* ===== RESPONSIVE BREAKPOINTS ===== */
 
-/* Tablets (768px–991px) → 2 per row */
+/* Tablets (2 per row) */
 @media (max-width: 991px) {
-  .dest-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .dest-hero-content h1 {
+  .header-content h1 {
     font-size: 2.2rem;
   }
-
-  .dest-hero {
-    height: 50vh;
+  .places-container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Phones (below 767px) → 1 per row */
+
+
+
+/* Phones (1 per row) */
 @media (max-width: 767px) {
   .navbar {
     flex-direction: column;
-    text-align: center;
     padding: 1rem;
   }
-
   .nav-links {
     flex-wrap: wrap;
     gap: 1rem;
   }
-
-  .dest-hero {
+  header {
     height: 45vh;
   }
-
-  .dest-hero-content h1 {
+  .header-content h1 {
     font-size: 1.8rem;
   }
-
-  .dest-section {
-    padding: 3rem 1rem;
-  }
-
-  .dest-grid {
+  .places-container {
     grid-template-columns: 1fr;
+    padding: 2rem 1rem;
   }
 }

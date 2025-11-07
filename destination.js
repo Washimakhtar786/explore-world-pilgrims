@@ -114,14 +114,16 @@ function displayPlaces(filteredPlaces) {
         <h2>${place.name}</h2>
         <p>${place.description}</p>
       </div>
-      <div class="package-details">
-        <span class="price">Price: ${place.price}</span>
-        <span class="days">Duration: ${place.days}</span>
-        <span class="hotel">Hotel: ${place.hotel}</span>
-        <span class="transport">Transport: ${place.transport}</span>
-        <span class="meals">Meals: ${place.meals}</span>
-        <button class="btn-book">Book Now</button>
-      </div>
+     <div class="package-details">
+  <ul class="info-list">
+    <li><strong>💰 Price:</strong> ${place.price}</li>
+    <li><strong>🕒 Duration:</strong> ${place.days}</li>
+    <li><strong>🏨 Hotel:</strong> ${place.hotel}</li>
+    <li><strong>🚗 Transport:</strong> ${place.transport}</li>
+    <li><strong>🍽️ Meals:</strong> ${place.meals}</li>
+  </ul>
+  <button class="btn-book">Book Now</button>
+</div>
     `;
     placesContainer.appendChild(card);
   });
